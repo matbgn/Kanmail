@@ -19,6 +19,7 @@ from kanmail.settings.constants import (
     CLIENT_ROOT,
     CONTACTS_CACHE_DB_FILE,
     DEBUG,
+    DEACTIVATE_SESSION_TOKEN,
     DEBUG_SENTRY,
     DEACTIVATE_SENTRY,
     FOLDER_CACHE_DB_FILE,
@@ -94,7 +95,7 @@ server = ServerWithGetPort((SERVER_HOST, SERVER_PORT), app)
 
 
 def add_route(*route_args, **route_kwargs):
-    if DEBUG and not IS_APP:  # don't apply in full browser dev mode
+    if DEBUG and not IS_APP or DEACTIVATE_SESSION_TOKEN:  # don't apply in full browser dev mode
         return add_public_route(*route_args, **route_kwargs)
 
     def wrapper(func):

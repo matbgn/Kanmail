@@ -49,7 +49,7 @@ LOG_FILE = path.join(APP_DIR, 'Kanmail.log')
 
 
 # Environment flags
-#
+DEACTIVATE_SESSION_TOKEN = environ.get('KANMAIL_NO_SESSION_TOKEN', 'off') == 'on'
 
 # Flag for opting-in/out from update watching/retrieving
 WATCH_UPDATE = environ.get('KANMAIL_UPDATE', 'on') == 'on'
