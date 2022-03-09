@@ -1,3 +1,4 @@
+import os
 from os import path
 
 from flask import jsonify, make_response, request, Response
@@ -19,7 +20,7 @@ from kanmail.server.mail import (
 )
 from kanmail.server.mail.message import make_email_message
 from kanmail.server.util import get_list_or_400, get_or_400
-from kanmail.settings.constants import IS_APP
+from kanmail.settings.constants import IS_APP, STATIC_FILES_SERVER_URL
 from kanmail.window import get_main_window
 
 
@@ -146,6 +147,12 @@ def api_download_account_email_part(account, folder, uid, part_number) -> Respon
 
     if isinstance(data, str):
         data = data.encode()
+
+    if STATIC_FILES_SERVER_URL:
+        files = os.listdir(downloads_folder)
+        for file in files:
+            file_path = os.path.join(downloads_folder, file)
+            os.unlink(file_path)
 
     with open(local_filename, 'wb') as f:
         f.write(data)
