@@ -26,4 +26,4 @@ VOLUME /home/kanmail/
 
 USER kanmail
 
-ENTRYPOINT [ "/bin/sh", "-c" , "./miniserve /home/kanmail/Downloads && /opt/kanmail/scripts/run_server.py" ]
+ENTRYPOINT [ "/opt/kanmail/scripts/run.sh" ]
