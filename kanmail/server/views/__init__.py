@@ -20,6 +20,7 @@ from kanmail.server.util import get_or_400
 from kanmail.settings import get_device_id, get_system_setting
 from kanmail.settings.constants import (
     CLIENT_ROOT,
+    STATIC_FILES_SERVER_URL,
     DEBUG,
     DEBUG_POSTHOG,
     DEACTIVATE_POSTHOG,
@@ -67,6 +68,7 @@ def _get_render_data():
     return {
         'version': get_version(),
         'license_email': check_get_license_email(),
+        'static_files_server_url': STATIC_FILES_SERVER_URL,
         'debug': DEBUG,
         'debug_sentry': DEBUG_SENTRY,
         'debug_posthog': DEBUG_POSTHOG,

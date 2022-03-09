@@ -44,6 +44,8 @@
         window.KANMAIL_LICENSED = {{ license_email|tojson }};
         window.KANMAIL_LICENSE_EMAIL = '{{ license_email }}';
 
+        window.KANMAIL_STATIC_FILES_SERVER_URL = {{ static_files_server_url|tojson }};
+
         window.KANMAIL_DEBUG = {{ debug|tojson }};
         window.KANMAIL_DEBUG_SENTRY = {{ debug_sentry|tojson }};
         window.KANMAIL_DEBUG_POSTHOG = {{ debug_posthog|tojson }};

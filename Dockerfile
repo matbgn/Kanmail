@@ -19,10 +19,10 @@ WORKDIR /opt/kanmail
 
 RUN chown -R kanmail:kanmail /opt/kanmail
 
-RUN mkdir -p /home/kanmail/.config/kanmail \
+RUN mkdir -p /home/kanmail/Downloads && mkdir -p /home/kanmail/.config/kanmail \
  && chown -R kanmail:kanmail /home/kanmail
 
-VOLUME /home/kanmail/.config/kanmail
+VOLUME /home/kanmail/
 
 USER kanmail
 

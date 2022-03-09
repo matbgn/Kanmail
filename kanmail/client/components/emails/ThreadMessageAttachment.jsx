@@ -25,6 +25,13 @@ export default class ThreadMessageAttachment extends React.Component {
     }
 
     handleClick = () => {
+        if (window.KANMAIL_STATIC_FILES_SERVER_URL && this.state.downloaded) {
+            const re = new RegExp('([^\\/]+$)')
+            const targetFile = re.exec(this.state.downloadedFilename)
+            window.open(`${window.KANMAIL_STATIC_FILES_SERVER_URL}${targetFile[0]}`, '_blank');
+            return;
+        }
+
         if (this.state.downloaded) {
             openFile(this.state.downloadedFilename);
             return;

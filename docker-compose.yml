@@ -7,8 +7,9 @@ services:
     container_name: kanmail
     ports:
       - "4420:4420"
+      - "4424:8080"
     volumes:
-      - kanmail_data:/home/kanmail/.config/kanmail/
+      - data:/home/kanmail/
     restart: always
 volumes:
-  kanmail_data: {}
+  data: {}
