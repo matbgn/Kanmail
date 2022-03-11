@@ -6,9 +6,12 @@ ARG PACKAGES='gcc make git musl-dev libc-dev libffi-dev libressl-dev zlib-dev ca
 
 ADD ./requirements /opt/kanmail/requirements
 
-RUN apk add --no-cache $PACKAGES \
+RUN apk add --no-cache $PACKAGES && apk add -U tzdata \
  && pip install -r /opt/kanmail/requirements/docker.txt --no-cache-dir \
  && apk del --purge $PACKAGES
+
+RUN cp /usr/share/zoneinfo/${TZ} /etc/localtime
+RUN echo ${TZ} >  /etc/timezone
 
 ADD . /opt/kanmail
 ADD ./dist /opt/kanmail/kanmail/client/static/dist
